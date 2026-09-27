@@ -1,0 +1,46 @@
+name: Continuous Integration (CI)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  backend-lint:
+    name: Backend Code Quality (Lint & Format)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22 (ESM Environment)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: './app/package-lock.json'
+
+      - name: Install Clean Dependencies
+        run: npm ci
+
+      - name: Audit Code Integrity (ESLint)
+        run: npm run lint
+
+  docker-build:
+    name: Docker Infrastructure Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate Compose Architecture
+        run: docker compose config
+
+      - name: Build API Image (Multi-stage Check)
+        run: docker compose build

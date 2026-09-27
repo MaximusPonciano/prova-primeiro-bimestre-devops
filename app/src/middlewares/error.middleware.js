@@ -7,6 +7,6 @@ export const errorHandler = (err, req, res, next) => {
   res.status(status).json({
     error: message,
     // stack só aparece em ambiente de desenvolvimento (padrão de segurança)
-    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
   });
 };
