@@ -1,11 +1,11 @@
 # Estágio 1: Dependências
-FROM node:18-alpine AS deps
+FROM node:22-alpine AS deps
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --omit=dev
 
 # Estágio 2: Produção (Imagem segura, otimizada e sem root)
-FROM node:18-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /usr/src/app
 
 # Regra 4: Segurança - Nunca rodar como root
