@@ -18,12 +18,10 @@ app.use('/reservas', reservasRoutes);
 
 // Rota inicial de Health Check
 app.get('/health', (req, res) => {
-  res
-    .status(200)
-    .json({
-      status: 'ok',
-      message: 'API de Reservas conectada e blindada com sucesso!',
-    });
+  res.status(200).json({
+    status: 'ok',
+    message: 'API de Reservas conectada e blindada com sucesso!',
+  });
 });
 
 // Middleware Global de Tratamento de Erros (sempre no final)
