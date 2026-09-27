@@ -28,7 +28,10 @@ export const ReservaModel = {
   },
 
   delete: async (id) => {
-    const result = await db.query('DELETE FROM reservas WHERE id=$1 RETURNING *', [id]);
+    const result = await db.query(
+      'DELETE FROM reservas WHERE id=$1 RETURNING *',
+      [id]
+    );
     return result.rows[0];
-  }
+  },
 };

@@ -9,10 +9,10 @@ export const validate = (schema) => (req, res, next) => {
   } catch (error) {
     return res.status(400).json({
       error: 'Erro de Validação (Bad Request)',
-      details: error.errors.map(err => ({
+      details: error.errors.map((err) => ({
         campo: err.path.join('.'),
-        mensagem: err.message
-      }))
+        mensagem: err.message,
+      })),
     });
   }
 };

@@ -9,7 +9,7 @@ import db from './config/database.js';
 const app = express();
 
 // Middlewares de Segurança (Blindagem)
-app.use(helmet()); 
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
@@ -18,7 +18,12 @@ app.use('/reservas', reservasRoutes);
 
 // Rota inicial de Health Check
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok', message: 'API de Reservas conectada e blindada com sucesso!' });
+  res
+    .status(200)
+    .json({
+      status: 'ok',
+      message: 'API de Reservas conectada e blindada com sucesso!',
+    });
 });
 
 // Middleware Global de Tratamento de Erros (sempre no final)
@@ -31,12 +36,14 @@ const server = app.listen(PORT, () => {
 
 // 🛑 Graceful Shutdown para orquestração Cloud/Docker
 const gracefullyShutdown = async (signal) => {
-  console.log(`\n🛑 [${signal}] Sinal de morte recebido. Iniciando Graceful Shutdown...`);
-  
+  console.log(
+    `\n🛑 [${signal}] Sinal de morte recebido. Iniciando Graceful Shutdown...`
+  );
+
   // 1. Para de receber novas requisições (mas termina as atuais)
   server.close(async () => {
     console.log('✅ Servidor HTTP enclausurado.');
-    
+
     // 2. Fecha conexões seguras com o Banco de Dados
     try {
       await db.end();
