@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "node-pg-migrate -m migrations"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "express": "^5.2.1",
     "express-async-handler": "^1.2.0",
     "helmet": "^8.3.0",
+    "node-pg-migrate": "^9.0.0",
     "pg": "^8.23.0",
     "zod": "^4.6.5"
   }

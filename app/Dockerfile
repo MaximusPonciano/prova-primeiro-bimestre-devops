@@ -19,5 +19,5 @@ COPY --chown=node:node src/ ./src/
 
 EXPOSE 3000
 
-# Executando o servidor
-CMD ["node", "src/index.js"]
+# Executando o servidor e as migrações na inicialização do container
+CMD ["sh", "-c", "npm run migrate up && node src/index.js"]
