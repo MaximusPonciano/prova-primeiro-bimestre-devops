@@ -1,0 +1,10 @@
+node_modules/
+.env
+.terraform/
+*.tfstate
+*.tfstate.*
+*.pem
+# AI and Exam context files
+provas/
+.agents/
+docs_/
