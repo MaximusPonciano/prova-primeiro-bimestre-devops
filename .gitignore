@@ -4,6 +4,8 @@ node_modules/
 *.tfstate
 *.tfstate.*
 *.pem
+tfplan
+*.tfplan
 # AI and Exam context files
 provas/
 .agents/

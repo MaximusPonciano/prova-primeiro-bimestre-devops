@@ -16,12 +16,20 @@ app.use(express.json());
 // Injeção de Rotas MVC
 app.use('/reservas', reservasRoutes);
 
-// Rota inicial de Health Check
-app.get('/health', (req, res) => {
-  res.status(200).json({
-    status: 'ok',
-    message: 'API de Reservas conectada e blindada com sucesso!',
-  });
+// Rota de Health Check (verifica conexão real com o banco)
+app.get('/health', async (req, res) => {
+  try {
+    await db.query('SELECT 1');
+    res.status(200).json({
+      status: 'ok',
+      db: 'connected',
+    });
+  } catch {
+    res.status(503).json({
+      status: 'degraded',
+      db: 'disconnected',
+    });
+  }
 });
 
 // Middleware Global de Tratamento de Erros (sempre no final)

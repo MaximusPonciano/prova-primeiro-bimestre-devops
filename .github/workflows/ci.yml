@@ -44,3 +44,25 @@ jobs:
 
       - name: Build API Image (Multi-stage Check)
         run: docker compose build
+
+  terraform-validate:
+    name: Infrastructure Code Quality (Terraform)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./infra
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Initialize Terraform (offline)
+        run: terraform init -backend=false
+
+      - name: Check Formatting
+        run: terraform fmt -check -recursive
+
+      - name: Validate Syntax
+        run: terraform validate
