@@ -21,4 +21,5 @@ COPY --chown=node:node migrations/ ./migrations/
 EXPOSE 3000
 
 # Executando o servidor e as migrações na inicialização do container
-CMD ["sh", "-c", "npm run migrate up && node src/index.js"]
+CMD ["sh", "-c", "npx node-pg-migrate up || true ; node src/index.js"]
+
