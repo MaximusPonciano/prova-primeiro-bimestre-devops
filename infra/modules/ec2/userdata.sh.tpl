@@ -7,6 +7,9 @@ set -euo pipefail
 # conflito com depends_on do servico db local.
 # ---------------------------------------------------------
 
+exec > /var/log/userdata.log 2>&1
+set -x
+
 # 1. Atualiza pacotes e instala Docker
 apt-get update -y
 apt-get install -y docker.io git
@@ -15,9 +18,9 @@ apt-get install -y docker.io git
 systemctl enable docker
 systemctl start docker
 
-# 3. Clona o repositorio da API
+# 3. Clona o repositorio da API na branch ativa
 cd /home/ubuntu
-git clone https://github.com/MaximusPonciano/prova-primeiro-bimestre-devops.git app
+git clone -b infra/setup-aws-terraform https://github.com/MaximusPonciano/prova-primeiro-bimestre-devops.git app || git clone https://github.com/MaximusPonciano/prova-primeiro-bimestre-devops.git app
 cd app/app
 
 # 4. Build da imagem Docker da API
