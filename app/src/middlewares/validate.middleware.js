@@ -1,3 +1,5 @@
+import { ZodError } from 'zod';
+
 export const validate = (schema) => (req, res, next) => {
   try {
     schema.parse({
@@ -7,12 +9,15 @@ export const validate = (schema) => (req, res, next) => {
     });
     next();
   } catch (error) {
-    return res.status(400).json({
-      error: 'Erro de Validação (Bad Request)',
-      details: error.errors.map((err) => ({
-        campo: err.path.join('.'),
-        mensagem: err.message,
-      })),
-    });
+    if (error instanceof ZodError) {
+      return res.status(400).json({
+        error: 'Erro de Validação (Bad Request)',
+        details: error.errors.map((err) => ({
+          campo: err.path.join('.'),
+          mensagem: err.message,
+        })),
+      });
+    }
+    next(error);
   }
 };

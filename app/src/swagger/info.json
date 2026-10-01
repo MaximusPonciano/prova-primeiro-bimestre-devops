@@ -15,7 +15,7 @@
         "properties": {
           "id": { "type": "integer", "example": 1 },
           "cliente": { "type": "string", "example": "Maximus" },
-          "data": { "type": "string", "format": "date-time", "example": "2026-10-15T19:00:00Z" },
+          "data": { "type": "string", "format": "date", "example": "2026-10-15" },
           "status": { "type": "string", "example": "pendente" }
         }
       },
@@ -24,7 +24,7 @@
         "required": ["cliente", "data"],
         "properties": {
           "cliente": { "type": "string", "example": "Maximus" },
-          "data": { "type": "string", "format": "date-time", "example": "2026-10-15T19:00:00Z" },
+          "data": { "type": "string", "format": "date", "example": "2026-10-15" },
           "status": { "type": "string", "example": "pendente" }
         }
       }
