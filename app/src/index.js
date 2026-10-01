@@ -5,6 +5,8 @@ import cors from 'cors';
 import reservasRoutes from './routes/reservas.routes.js';
 import { errorHandler } from './middlewares/error.middleware.js';
 import db from './config/database.js';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger/index.js';
 
 const app = express();
 
@@ -15,6 +17,9 @@ app.use(express.json());
 
 // Injeção de Rotas MVC
 app.use('/reservas', reservasRoutes);
+
+// Documentação Swagger (Modular via JSONs combinados)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Rota de Health Check (verifica conexão real com o banco)
 app.get('/health', async (req, res) => {

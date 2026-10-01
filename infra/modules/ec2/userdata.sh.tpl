@@ -30,7 +30,7 @@ docker rm -f reservas-api || true
 docker run -d \
   --name reservas-api \
   --restart unless-stopped \
-  -p 3000:3000 \
+  -p 80:3000 \
   -e DB_HOST="${db_host}" \
   -e DB_PORT="${db_port}" \
   -e DB_NAME="${db_name}" \

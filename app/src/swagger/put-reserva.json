@@ -1,0 +1,28 @@
+{
+  "put": {
+    "summary": "Atualiza uma Reserva",
+    "parameters": [
+      { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": { "$ref": "#/components/schemas/CriarReservaInput" }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Reserva atualizada",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Reserva" }
+          }
+        }
+      },
+      "400": { "description": "Erro de validação" },
+      "404": { "description": "Reserva não encontrada" }
+    }
+  }
+}

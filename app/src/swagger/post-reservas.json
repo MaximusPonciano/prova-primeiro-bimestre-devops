@@ -1,0 +1,24 @@
+{
+  "post": {
+    "summary": "Cria uma nova Reserva",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": { "$ref": "#/components/schemas/CriarReservaInput" }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Reserva criada",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Reserva" }
+          }
+        }
+      },
+      "400": { "description": "Erro de validação" }
+    }
+  }
+}

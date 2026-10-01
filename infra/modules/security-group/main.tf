@@ -3,7 +3,7 @@
 # ---------------------------------------------------------
 resource "aws_security_group" "ec2" {
   name        = "${var.project_name}-ec2-sg"
-  description = "Permite SSH (22) e API (3000) de qualquer origem"
+  description = "Permite SSH (22) e API (80) de qualquer origem"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -15,9 +15,9 @@ resource "aws_security_group" "ec2" {
   }
 
   ingress {
-    description = "API Node.js"
-    from_port   = 3000
-    to_port     = 3000
+    description = "API Node.js (HTTP)"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
