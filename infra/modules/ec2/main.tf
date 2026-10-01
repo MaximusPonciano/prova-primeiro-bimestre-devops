@@ -28,13 +28,13 @@ resource "aws_instance" "api" {
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  user_data = base64encode(templatefile("${path.module}/userdata.sh.tpl", {
+  user_data = templatefile("${path.module}/userdata.sh.tpl", {
     db_host     = var.db_host
     db_port     = var.db_port
     db_name     = var.db_name
     db_user     = var.db_user
     db_password = var.db_password
-  }))
+  })
 
   tags = {
     Name = "${var.project_name}-api-server"

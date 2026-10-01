@@ -3,6 +3,6 @@
 
 project_name = "technova"
 db_name      = "reservas_db"
-db_username  = "admin"
+db_username  = "dbuser"
 db_password  = "MudeEstaSenhaSegura123!"
 key_name     = null # Altere para o nome do seu Key Pair na AWS caso queira acesso SSH na EC2
