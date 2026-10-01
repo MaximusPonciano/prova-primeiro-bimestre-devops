@@ -41,7 +41,8 @@ docker run -d \
   -e PGDATABASE="${db_name}" \
   -e PGUSER="${db_user}" \
   -e PGPASSWORD="${db_password}" \
-  -e DATABASE_URL="postgres://${db_user}:${db_password}@${db_host}:${db_port}/${db_name}" \
+  -e DATABASE_URL="postgres://${db_user}:${db_password}@${db_host}:${db_port}/${db_name}?sslmode=no-verify" \
+  -e PGSSLMODE="no-verify" \
   -e DB_SSL="true" \
   -e PORT=3000 \
   reservas-api
