@@ -8,7 +8,8 @@
     "migrate": "node-pg-migrate -m migrations",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "format": "prettier --write \"src/**/*.js\""
+    "format": "prettier --write \"src/**/*.js\"",
+    "prepare": "cd .. && husky .husky"
   },
   "keywords": [],
   "author": "",
@@ -21,11 +22,20 @@
     "helmet": "^8.3.0",
     "node-pg-migrate": "^9.0.0",
     "pg": "^8.23.0",
+    "swagger-ui-express": "^5.0.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {
     "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.9.9"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
