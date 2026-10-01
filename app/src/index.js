@@ -13,12 +13,14 @@ const app = express();
 // Middlewares de Segurança (Blindagem)
 app.use(
   helmet({
+    hsts: false,
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-        styleSrc: ["'self'", "'unsafe-inline'", 'https:'],
-        imgSrc: ["'self'", 'data:'],
+        styleSrc: ["'self'", "'unsafe-inline'", "'https:'"],
+        imgSrc: ["'self'", "'data:'"],
+        upgradeInsecureRequests: null,
       },
     },
   })
