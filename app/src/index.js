@@ -11,7 +11,18 @@ import swaggerDocument from './swagger/index.js';
 const app = express();
 
 // Middlewares de Segurança (Blindagem)
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        styleSrc: ["'self'", "'unsafe-inline'", 'https:'],
+        imgSrc: ["'self'", 'data:'],
+      },
+    },
+  })
+);
 app.use(cors());
 app.use(express.json());
 
