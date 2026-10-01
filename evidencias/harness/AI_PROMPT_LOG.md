@@ -138,6 +138,22 @@ Este documento registra a jornada completa do projeto (Aulas 01 a 07), detalhand
 
 ---
 
+## 🛡️ Fase 9: Troubleshooting do Swagger UI em Produção (CORS, CSP e Helmet)
+
+**Objetivo/Prompt**:
+> *"Diagnosticar e corrigir a falha no carregamento e execução interativa da documentação da API em produção (AWS), onde a tela do Swagger apresentava-se em branco ou os botões 'Try it out' retornavam falhas de CORS (Failed to fetch)."*
+
+**O que gerou bem**:
+- Análise rápida e precisa dos logs de Network do navegador e dos headers de segurança da API.
+- Ajuste do arquivo da coleção Postman para utilizar a variável dinâmica `{{baseUrl}}`, aderindo ao padrão AcquaCheck.
+
+**Correções Necessárias**:
+- **Problema 1 (Tela em Branco)**: A interface do Swagger não carregava devido à blindagem estrita do middleware `Helmet`. A política padrão do Content Security Policy (CSP) impedia a injeção do javascript e CSS nativos do Swagger (`unsafe-inline`). A IA reescreveu a política de segurança do Helmet para abrir exceções perfeitamente calculadas para a documentação, reativando a interface na AWS.
+- **Problema 2 (Upgrade Insecure Requests & HSTS)**: O navegador forçava o protocolo `HTTPS`, causando timeouts (visto que o Learner Lab não dispõe de domínio/certificado). A IA desativou a chave HSTS e a flag `upgradeInsecureRequests` no Helmet.
+- **Problema 3 (CORS no Try it out)**: O arquivo `info.json` do Swagger continha a URL estática `http://localhost:3000`. Ao testar via cloud, os requests eram roteados para a máquina local do usuário. A IA converteu a rota para relativa (`"/"`), unificando o comportamento para que a API funcione de forma agnóstica tanto localmente quanto na nuvem.
+
+---
+
 ## ⚖️ Conclusão da IA (Análise Comparativa: Manual vs. Copiloto)
 
 A atuação da Inteligência Artificial como copiloto no projeto apresentou ganhos expressivos de produtividade, exigindo porém supervisão arquitetural constante por parte do desenvolvedor:
