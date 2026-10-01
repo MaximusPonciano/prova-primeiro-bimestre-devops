@@ -6,7 +6,7 @@
     "description": "Documentação modularizada da API de Reservas"
   },
   "servers": [
-    { "url": "http://localhost:3000", "description": "Local" }
+    { "url": "/", "description": "Servidor Atual (Dinâmico)" }
   ],
   "components": {
     "schemas": {
