@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/health",
+					"raw": "{{baseUrl}}/health",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -41,7 +41,7 @@
 					"raw": "{\n    \"cliente\": \"Maximus Ponciano\",\n    \"data\": \"2026-10-15\",\n    \"status\": \"confirmado\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:3000/reservas",
+					"raw": "{{baseUrl}}/reservas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -70,7 +70,7 @@
 					"raw": "{}"
 				},
 				"url": {
-					"raw": "http://localhost:3000/reservas",
+					"raw": "{{baseUrl}}/reservas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -89,7 +89,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/reservas",
+					"raw": "{{baseUrl}}/reservas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -108,7 +108,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/reservas/1",
+					"raw": "{{baseUrl}}/reservas/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -138,7 +138,7 @@
 					"raw": "{\n    \"cliente\": \"Maximus Alterado\",\n    \"data\": \"2026-11-20\",\n    \"status\": \"concluido\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:3000/reservas/1",
+					"raw": "{{baseUrl}}/reservas/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -168,7 +168,7 @@
 					"raw": "{\n    \"cliente\": \"Maximus Hacker\",\n    \"data\": \"DATA_ERRADA\",\n    \"status\": \"pendente\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:3000/reservas/1",
+					"raw": "{{baseUrl}}/reservas/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -188,7 +188,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/reservas/1",
+					"raw": "{{baseUrl}}/reservas/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -201,6 +201,13 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://100.53.60.116",
+			"type": "string"
 		}
 	]
 }
