@@ -4,7 +4,8 @@ const { Pool } = pkg;
 const poolConfig = process.env.DATABASE_URL
   ? {
       connectionString: process.env.DATABASE_URL,
-      ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
+      ssl:
+        process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
       connectionTimeoutMillis: 10000,
     }
   : {
@@ -13,7 +14,8 @@ const poolConfig = process.env.DATABASE_URL
       user: process.env.DB_USER || 'admin',
       password: process.env.DB_PASS || 'adminpassword',
       database: process.env.DB_NAME || 'reservas_db',
-      ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
+      ssl:
+        process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
       connectionTimeoutMillis: 10000,
     };
 
