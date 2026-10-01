@@ -51,7 +51,7 @@ docker compose down
 A infraestrutura foi desenhada e provisionada através do Terraform (`us-east-1` no AWS Academy Learner Lab).
 
 - **Rede (VPC):** VPC `10.0.0.0/16` com 2 subnets públicas (para as EC2s/API) e 2 subnets privadas (para o banco de dados), com Internet Gateway configurado.
-- **Segurança (Security Groups):** SG da EC2 liberando apenas portas essenciais (22, 3000). SG do Banco de Dados liberando a porta `5432` **apenas** para requisições com origem no SG da EC2.
+- **Segurança (Security Groups):** SG da EC2 liberando apenas portas essenciais (22, 80). SG do Banco de Dados liberando a porta `5432` **apenas** para requisições com origem no SG da EC2.
 - **Compute (EC2):** Instância `t2.micro` nas subnets públicas utilizando o `LabInstanceProfile`. O script de inicialização (`user_data`) clona o código e sobe o container da API de Reservas.
 - **Banco de Dados (RDS PostgreSQL):** Instância gerenciada `db.t3.micro` provisionada isoladamente na camada privada, garantindo segurança a nível de arquitetura.
 - **Remote State:** O controle de estado do Terraform utiliza um bucket S3 para armazenamento persistente e uma tabela DynamoDB nativa para controle de travas (state locking).

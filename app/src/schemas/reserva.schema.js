@@ -13,8 +13,10 @@ export const createReservaSchema = z.object({
         required_error: 'A data da reserva é obrigatória',
       })
       .regex(/^\d{4}-\d{2}-\d{2}$/, 'A data deve estar no formato YYYY-MM-DD'),
-    status: z.string({
+    status: z.enum(['pendente', 'confirmada', 'cancelada'], {
       required_error: 'O status é obrigatório',
+      invalid_type_error:
+        'O status deve ser: pendente, confirmada ou cancelada',
     }),
   }),
 });
