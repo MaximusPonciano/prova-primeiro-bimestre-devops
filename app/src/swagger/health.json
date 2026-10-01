@@ -1,0 +1,9 @@
+{
+  "get": {
+    "summary": "Health Check",
+    "responses": {
+      "200": { "description": "Serviços funcionando" },
+      "503": { "description": "Banco desconectado" }
+    }
+  }
+}

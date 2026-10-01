@@ -1,0 +1,19 @@
+{
+  "get": {
+    "summary": "Busca Reserva por ID",
+    "parameters": [
+      { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+    ],
+    "responses": {
+      "200": {
+        "description": "Dados da reserva",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Reserva" }
+          }
+        }
+      },
+      "404": { "description": "Reserva não encontrada" }
+    }
+  }
+}

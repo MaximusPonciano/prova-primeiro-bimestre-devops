@@ -1,0 +1,33 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Reservas - TechNova",
+    "version": "1.0.0",
+    "description": "Documentação modularizada da API de Reservas"
+  },
+  "servers": [
+    { "url": "http://localhost:3000", "description": "Local" }
+  ],
+  "components": {
+    "schemas": {
+      "Reserva": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 1 },
+          "cliente": { "type": "string", "example": "Maximus" },
+          "data": { "type": "string", "format": "date-time", "example": "2026-10-15T19:00:00Z" },
+          "status": { "type": "string", "example": "pendente" }
+        }
+      },
+      "CriarReservaInput": {
+        "type": "object",
+        "required": ["cliente", "data"],
+        "properties": {
+          "cliente": { "type": "string", "example": "Maximus" },
+          "data": { "type": "string", "format": "date-time", "example": "2026-10-15T19:00:00Z" },
+          "status": { "type": "string", "example": "pendente" }
+        }
+      }
+    }
+  }
+}

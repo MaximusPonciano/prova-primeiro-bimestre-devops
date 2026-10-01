@@ -1,0 +1,18 @@
+{
+  "get": {
+    "summary": "Lista de Reservas",
+    "responses": {
+      "200": {
+        "description": "Lista de reservas",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/components/schemas/Reserva" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
