@@ -10,3 +10,4 @@ tfplan
 provas/
 .agents/
 docs_/
+*.tfvars
