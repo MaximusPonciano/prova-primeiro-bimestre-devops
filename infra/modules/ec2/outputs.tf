@@ -10,5 +10,5 @@ output "public_ip" {
 
 output "api_url" {
   description = "URL da API de Reservas"
-  value       = "http://${aws_instance.api.public_ip}:3000"
+  value       = "http://${aws_instance.api.public_ip}"
 }

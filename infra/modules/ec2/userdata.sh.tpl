@@ -18,7 +18,7 @@ systemctl start docker
 
 # 3. Clona o repositorio da API na branch ativa
 rm -rf /home/ubuntu/app
-git clone -b infra/setup-aws-terraform https://github.com/MaximusPonciano/prova-primeiro-bimestre-devops.git /home/ubuntu/app || git clone https://github.com/MaximusPonciano/prova-primeiro-bimestre-devops.git /home/ubuntu/app
+git clone https://github.com/MaximusPonciano/prova-primeiro-bimestre-devops.git /home/ubuntu/app
 
 cd /home/ubuntu/app/app
 
@@ -42,5 +42,6 @@ docker run -d \
   -e PGUSER="${db_user}" \
   -e PGPASSWORD="${db_password}" \
   -e DATABASE_URL="postgres://${db_user}:${db_password}@${db_host}:${db_port}/${db_name}" \
+  -e DB_SSL="true" \
   -e PORT=3000 \
   reservas-api

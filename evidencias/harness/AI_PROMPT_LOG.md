@@ -123,6 +123,21 @@ Este documento registra a jornada completa do projeto (Aulas 01 a 07), detalhand
 
 ---
 
+## 🔍 Fase 8: Troubleshooting em Produção (AWS RDS PostgreSQL 15 & SSL)
+
+**Objetivo/Prompt**:
+> *"Investigar e corrigir o motivo pelo qual a API retornava status 'degraded' e 'db: disconnected' logo após o deploy na AWS, mesmo com o RDS constando como ativo."*
+
+**O que gerou bem**:
+- Análise de logs da aplicação, inspeção da rede e Security Groups (verificando se o tráfego da EC2 chegava no RDS pela porta 5432).
+- Diagnóstico certeiro de que o problema não era conectividade de rede, mas sim os requisitos de criptografia do banco.
+
+**Correções Necessárias**:
+- O AWS RDS, ao utilizar o engine `postgres` na versão 15, altera o `parameter_group` padrão para forçar conexões com SSL (`rds.force_ssl=1`). A IA detectou que o script de *userdata* (`userdata.sh.tpl`) inicializava o contêiner sem habilitar a flag de SSL suportada pela aplicação.
+- A IA corrigiu o script adicionando `-e DB_SSL="true"`, realizou o `terraform taint` na EC2 para forçar a recriação limpa com o novo userdata, executou o `terraform apply` novamente e atestou que a comunicação entre API e RDS passou a ocorrer perfeitamente (retornando HTTP 200).
+
+---
+
 ## ⚖️ Conclusão da IA (Análise Comparativa: Manual vs. Copiloto)
 
 A atuação da Inteligência Artificial como copiloto no projeto apresentou ganhos expressivos de produtividade, exigindo porém supervisão arquitetural constante por parte do desenvolvedor:
